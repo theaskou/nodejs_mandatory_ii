@@ -598,6 +598,9 @@ dist-ssr
 *.sln
 *.sw?
 
+# Database
+users.db
+seedData.js
 
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
