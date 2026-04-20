@@ -1,5 +1,6 @@
 import db from './connection.js';
 import seedData from "./seedData.js";
+import pwdHashing from '../utils/passwordHashing.js';
 
 db.exec(`
     CREATE TABLE IF NOT EXISTS users (
@@ -10,11 +11,12 @@ db.exec(`
     );
 `);
 
-seedData.users.forEach((user) => { 
-    db.prepare(`
-        INSERT INTO users (user_name, pwd, verified) VALUES ('${user.user_name}', '${user.pwd}', ${user.verified ? true : false})`)
-        .run()
-});
+const seed = db.prepare(`INSERT INTO users (user_name, pwd, verified) VALUES (?, ?, ?)`);
+
+for (const user of seedData.users) {
+    const hashedPwd = await pwdHashing(user.pwd);
+    seed.run(user.user_name, hashedPwd, user.verified ? 1 : 0);
+}
 
 
 

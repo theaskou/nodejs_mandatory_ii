@@ -599,7 +599,7 @@ dist-ssr
 *.sw?
 
 # Database
-users.db
+database.db
 seedData.js
 
 ### VisualStudio Patch ###
