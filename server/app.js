@@ -25,8 +25,11 @@ app.use(helmet());
 import loginRouter from './routers/loginRouter.js';
 app.use(loginRouter);
 
-import frontpageRouter from './routers/frontpageRouter.js'
-app.use(frontpageRouter);
+import signUpRouter from './routers/signUpRouter.js';
+app.use(signUpRouter);
+
+import landingpageRouter from './routers/landingpageRouter.js';
+app.use(landingpageRouter);
 
 import logoutRouter from './routers/logoutRouter.js';
 app.use(logoutRouter);
