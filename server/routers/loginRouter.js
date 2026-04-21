@@ -11,7 +11,7 @@ router.post("/login", rateLimiter, async (req, res) => {
     const authenticatedUser = await passwordAuthentication(userName, password);
 
     if (!authenticatedUser) {
-      return res.status(401).json({ error: "No user was found with those credentials" });
+      return res.status(401).json({ error: "Wrong credentials" });
     }
 
     req.session.userID = authenticatedUser.id;
@@ -19,8 +19,7 @@ router.post("/login", rateLimiter, async (req, res) => {
     res.send({ data: authenticatedUser.id });
 
   } catch (error) {
-    console.log(error);
-    res.status(error.status).json({error});
+    res.status(error.status ?? 500).json({error : "Server error" });
   }
 });
 

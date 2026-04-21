@@ -28,6 +28,10 @@ app.use(loginRouter);
 import frontpageRouter from './routers/frontpageRouter.js'
 app.use(frontpageRouter);
 
+import logoutRouter from './routers/logoutRouter.js';
+app.use(logoutRouter);
+
+
 
 const PORT = process.env.PORT ?? 8080;
 
