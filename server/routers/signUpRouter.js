@@ -6,9 +6,7 @@ import rateLimiter from "../utils/rateLimiter.js";
 const router = Router();
 
 router.post("/users", rateLimiter, async (req, res) => {
-
   try {
-
     const { userName, email, pwd, repeatedPwd } = req.body;
 
     if (!userName || !email || !pwd || !repeatedPwd) {
@@ -41,18 +39,16 @@ router.post("/users", rateLimiter, async (req, res) => {
 
     const hashedPwd = await pwdHashing(pwd);
 
-    db.prepare("INSERT INTO users  (user_name, email, pwd, verified) VALUES (?, ?, ?, ?)").run(
-      userName,
-      email,
-      hashedPwd,
-      0
-    );
+    db.prepare(
+      "INSERT INTO users  (user_name, email, pwd, verified) VALUES (?, ?, ?, ?)",
+    ).run(userName, email, hashedPwd, 0);
 
     res.status(201).json({ message: "User created successfully" });
-    
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Server error" });
+    res
+      .status(error.status ?? 500)
+      .json({ message: error.message ?? "Server error" });
   }
 });
 

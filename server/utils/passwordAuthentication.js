@@ -11,7 +11,7 @@ async function passwordAuthentication(userName, password) {
   }
 
   const isAuthenticated = await bcrypt.compare(password, user.pwd);
-  
+
   if (!isAuthenticated) {
     return;
   }

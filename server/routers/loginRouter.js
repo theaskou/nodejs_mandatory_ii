@@ -2,7 +2,6 @@ import { Router } from "express";
 import passwordAuthentication from "../utils/passwordAuthentication.js";
 import rateLimiter from "../utils/rateLimiter.js";
 
-
 const router = Router();
 
 router.post("/login", rateLimiter, async (req, res) => {
@@ -17,9 +16,8 @@ router.post("/login", rateLimiter, async (req, res) => {
     req.session.userID = authenticatedUser.id;
 
     res.send({ data: authenticatedUser.id });
-
   } catch (error) {
-    res.status(error.status ?? 500).json({error : "Server error" });
+    res.status(error.status ?? 500).json({ error: "Server error" });
   }
 });
 

@@ -1,40 +1,40 @@
-import express from 'express';
+import express from "express";
 
 const app = express();
 
 app.use(express.json());
 
-import 'dotenv/config';
+import "dotenv/config";
 
-import session from 'express-session';
+import session from "express-session";
 
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    httpOnly: true,
-    secure: false,
-    maxAge: 1000 * 60 * 60 * 24 
-  }
-}));
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      secure: false,
+      maxAge: 1000 * 60 * 60 * 24,
+    },
+  }),
+);
 
 import helmet from "helmet";
 app.use(helmet());
 
-import loginRouter from './routers/loginRouter.js';
+import loginRouter from "./routers/loginRouter.js";
 app.use(loginRouter);
 
-import signUpRouter from './routers/signUpRouter.js';
+import signUpRouter from "./routers/signUpRouter.js";
 app.use(signUpRouter);
 
-import landingpageRouter from './routers/landingpageRouter.js';
+import landingpageRouter from "./routers/landingpageRouter.js";
 app.use(landingpageRouter);
 
-import logoutRouter from './routers/logoutRouter.js';
+import logoutRouter from "./routers/logoutRouter.js";
 app.use(logoutRouter);
-
-
 
 const PORT = process.env.PORT ?? 8080;
 
