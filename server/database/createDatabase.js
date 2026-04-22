@@ -1,6 +1,6 @@
 import db from "./connection.js";
 import seedData from "./seedData.js";
-import pwdHashing from "../utils/passwordHashing.js";
+import pwdHashing from "../utils/passwordHandling/passwordHashing.js";
 
 db.exec(`
     CREATE TABLE IF NOT EXISTS users (

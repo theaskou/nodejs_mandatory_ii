@@ -30,6 +30,9 @@ app.use(loginRouter);
 import signUpRouter from "./routers/signUpRouter.js";
 app.use(signUpRouter);
 
+import verifyRouter from './routers/verifyRouter.js'
+app.use(verifyRouter);
+
 import landingpageRouter from "./routers/landingpageRouter.js";
 app.use(landingpageRouter);
 

@@ -1,7 +1,8 @@
 import { Router } from "express";
 import db from "../database/connection.js";
-import pwdHashing from "../utils/passwordHashing.js";
-import rateLimiter from "../utils/rateLimiter.js";
+import pwdHashing from "../utils/passwordHandling/passwordHashing.js";
+import rateLimiter from "../utils/rateLimiters/rateLimiter.js";
+import sendVerificationEmail from "../utils/emails/sendEmails.js";
 
 const router = Router();
 
@@ -39,9 +40,15 @@ router.post("/users", rateLimiter, async (req, res) => {
 
     const hashedPwd = await pwdHashing(pwd);
 
-    db.prepare(
-      "INSERT INTO users  (user_name, email, pwd, verified) VALUES (?, ?, ?, ?)",
-    ).run(userName, email, hashedPwd, 0);
+    const insert = db
+      .prepare(
+        "INSERT INTO users  (user_name, email, pwd, verified) VALUES (?, ?, ?, ?)",
+      )
+      .run(userName, email, hashedPwd, 0);
+
+    const userID = insert.lastInsertRowid;
+
+    sendVerificationEmail(email, userName, userID);
 
     res.status(201).json({ message: "User created successfully" });
   } catch (error) {

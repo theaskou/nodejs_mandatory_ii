@@ -1,5 +1,5 @@
 export default {
   users: [
-    { user_name: "", pwd: "", verified: true }
+    { user_name: "", email: "", pwd: "", verified: 1 }
   ],
 };

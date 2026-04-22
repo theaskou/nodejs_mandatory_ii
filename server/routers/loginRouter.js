@@ -1,6 +1,6 @@
 import { Router } from "express";
-import passwordAuthentication from "../utils/passwordAuthentication.js";
-import rateLimiter from "../utils/rateLimiter.js";
+import passwordAuthentication from "../utils/passwordHandling/passwordAuthentication.js";
+import rateLimiter from "../utils/rateLimiters/rateLimiter.js";
 
 const router = Router();
 

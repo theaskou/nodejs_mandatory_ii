@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import db from "../database/connection.js";
+import db from "../../database/connection.js";
 
 async function passwordAuthentication(userName, password) {
   const user = db
