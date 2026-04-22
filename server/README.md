@@ -61,3 +61,5 @@ node createDatabase.js
 
 Nodemailer is a temporary first version solution for verifying a user account. 
 To test it, open the link to the Ethereal email simulation in the terminal, when a user is created successfully. Follow the link in the email to verify the account.
+
+The verification tokens and userID's are currently being stored in a Map, which does not persist when restarting the server.
