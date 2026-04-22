@@ -35,8 +35,8 @@ An authentication system assignment built with Node.js and Express.
    npm install
    ```
 
-3. Set up your environment variables by creating a `.env` file in the root directory. See the .env.example file for what to include.
-   ```
+3. Set up your environment variables by creating a `.env` file in the root directory. 
+See the .env.example file for what to include.
 
 ### Running the App
 
