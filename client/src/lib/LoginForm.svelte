@@ -1,34 +1,34 @@
 <script>
   import { fetchPost } from "../utils/fetchUtil.js";
+  import { navigate } from "svelte-routing";
+  import { toast } from "@zerodevx/svelte-toast";
 
-  let userName = '';
-  let password = '';
-  let errorMessage = '';
-  
+  let userName = "";
+  let password = "";
+
   async function handleLogin(event) {
     event.preventDefault();
 
-    const response = await fetchPost('/login', { userName, password });
+    const response = await fetchPost("/login", { userName, password });
 
     if (response.error) {
-      errorMessage = response.error;
+      toast.push(`${response.error}`);
     } else {
-      window.location.href = '/welcome';
+      navigate("/welcome", { replace: true });
     }
   }
-  </script>
+</script>
 
-
-
-<form id="login-form" on:submit={handleLogin} >
+<form id="login-form" on:submit={handleLogin}>
   <label>
     Username:
-    <input 
+    <input
       type="text"
       bind:value={userName}
       id="user-name"
       required
-      placeholder="Your username…"/>
+      placeholder="Your username…"
+    />
   </label>
   <label>
     Password:
@@ -37,11 +37,10 @@
       bind:value={password}
       id="password"
       required
-      placeholder="Your password…"/>
+      placeholder="Your password…"
+    />
   </label>
 
-  {#if errorMessage}
-  TOASTR NOTIFICATION
-  {/if}
+
   <button id="log-in-button">Log in</button>
 </form>

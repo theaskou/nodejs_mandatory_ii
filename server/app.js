@@ -40,7 +40,7 @@ app.use(signUpRouter);
 import verifyRouter from './routers/verifyRouter.js'
 app.use(verifyRouter);
 
-import landingpageRouter from "./routers/landingpageRouter.js";
+import landingpageRouter from "./routers/authCheckRouter.js";
 app.use(landingpageRouter);
 
 import logoutRouter from "./routers/logoutRouter.js";

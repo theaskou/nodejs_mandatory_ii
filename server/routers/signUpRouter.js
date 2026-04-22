@@ -48,9 +48,12 @@ router.post("/users", rateLimiter, async (req, res) => {
 
     const userID = insert.lastInsertRowid;
 
+    req.session.userID = userID;
+
     sendVerificationEmail(email, userName, userID);
 
     res.status(201).json({ message: "User created successfully" });
+
   } catch (error) {
     console.error(error);
     res
