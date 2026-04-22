@@ -42,7 +42,7 @@ router.post("/users", rateLimiter, async (req, res) => {
 
     const insert = db
       .prepare(
-        "INSERT INTO users  (user_name, email, pwd, verified) VALUES (?, ?, ?, ?)",
+        "INSERT INTO users (user_name, email, pwd, verified) VALUES (?, ?, ?, ?)",
       )
       .run(userName, email, hashedPwd, 0);
 

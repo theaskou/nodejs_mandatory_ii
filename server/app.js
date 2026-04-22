@@ -6,6 +6,13 @@ app.use(express.json());
 
 import "dotenv/config";
 
+import cors from 'cors';
+
+app.use(cors({
+  origin: process.env.VITE_BASE_URL,
+  credentials: true
+}));
+
 import session from "express-session";
 
 app.use(

@@ -6,11 +6,16 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build-dev": "vite build --watch",
     "preview": "vite preview"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^7.0.0",
     "svelte": "^5.55.1",
     "vite": "^8.0.4"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "svelte-routing": "^2.13.0"
   }
 }
