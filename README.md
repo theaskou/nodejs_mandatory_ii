@@ -72,8 +72,6 @@ Create the `seedData.js` file before creating the database (see above), then run
 node createDatabase.js
 ```
 
-See the seedDatabase.js.example for what to include.
-
 ### Start the backend
 
 ```bash
